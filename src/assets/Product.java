@@ -8,7 +8,12 @@ package assets;
 import DB_Connection.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.HashSet;
+import java.util.LinkedList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -29,6 +34,12 @@ public class Product {
         this.category = category;
         this.price = price;
     }
+     public Product(int id,String product_name, int quantity,int price){
+     this.id=id;
+     this.product_name = product_name;
+        this.quantity = quantity;
+         this.price = price;
+     }
 
     public Product() {
     }
@@ -74,7 +85,7 @@ public class Product {
     }
 
    public boolean Add() throws Exception {
-        Connection conn=new DBConnection().getconnection();
+        Connection conn= DBConnection.getInstance().getconnection();
 
             PreparedStatement add=conn.prepareStatement("insert into product values (?,?,?,?,?)");
         add.setInt(1, id);
@@ -89,7 +100,7 @@ public class Product {
     }
 
     public boolean Edite() throws Exception {
-        Connection conn=new DBConnection().getconnection();
+        Connection conn= DBConnection.getInstance().getconnection();
                 PreparedStatement edite=conn.prepareStatement("UPDATE product SET PRODUCT_NAME=?,QUANTITY=?,CATEGORY=?,PRICE=? WHERE ID=?");
         edite.setString(1, product_name);
         edite.setInt(2, quantity);
@@ -102,7 +113,7 @@ public class Product {
     }
 
     public boolean Delete() throws Exception {
-        Connection conn=new DBConnection().getconnection();
+       Connection conn= DBConnection.getInstance().getconnection();
         PreparedStatement delete = conn.prepareStatement("DELETE FROM product WHERE ID=?");
         delete.setInt(1, id);
         delete.execute();
@@ -110,7 +121,7 @@ public class Product {
     }
     
      public boolean updateQuantity() throws Exception {
-        Connection conn=new DBConnection().getconnection();
+        Connection conn= DBConnection.getInstance().getconnection();
                 PreparedStatement edite=conn.prepareStatement("UPDATE `product` SET `QUANTITY`=? WHERE `PRODUCT_NAME`=?");
         
         edite.setInt(1, quantity);
@@ -119,5 +130,15 @@ public class Product {
         edite.execute();
         return true;
     }
+      
+      public  LinkedList<Product> getData() throws Exception {
+        LinkedList<Product> data = new LinkedList<Product>();
+        for(Product pr:data){
+        data.add(pr);
+        }
+        return data;
+    }
+    
+     
     
 }
