@@ -51,7 +51,7 @@ PreparedStatement prst=null;
     
      public void selectedDev(){
         try{
-     conn=new DBConnection().getconnection();
+     conn= DBConnection.getInstance().getconnection();
       st=conn.createStatement();
       rs=st.executeQuery("select* from users");
      tbusers.setModel(DbUtils.resultSetToTableModel(rs));
@@ -66,7 +66,7 @@ User pr=new User();
     
     
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -87,7 +87,7 @@ User pr=new User();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(java.awt.Color.darkGray);
+        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txttype.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
@@ -221,9 +221,9 @@ User pr=new User();
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void btndeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btndeleteMouseClicked
+    private void btndeleteMouseClicked(java.awt.event.MouseEvent evt) {                                       
         if(txtaccount.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "please enter the  user want deleted");
         }
@@ -246,9 +246,9 @@ User pr=new User();
             }
 
         }
-    }//GEN-LAST:event_btndeleteMouseClicked
+    }                                      
 
-    private void btnaddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnaddMouseClicked
+    private void btnaddMouseClicked(java.awt.event.MouseEvent evt) {                                    
         try{
         
 
@@ -271,9 +271,9 @@ User pr=new User();
     catch(Exception e){
         e.printStackTrace();
         }
-    }//GEN-LAST:event_btnaddMouseClicked
+    }                                   
 
-    private void btnediteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnediteMouseClicked
+    private void btnediteMouseClicked(java.awt.event.MouseEvent evt) {                                      
         if(txtaccount.getText().isEmpty() ||txtuser.getText().isEmpty() || txtpassword.getText().isEmpty() || txttype.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Missing Information ");
         }else
@@ -295,9 +295,9 @@ User pr=new User();
                 e.printStackTrace();
             }
         }
-    }//GEN-LAST:event_btnediteMouseClicked
+    }                                     
 
-    private void tbusersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbusersMouseClicked
+    private void tbusersMouseClicked(java.awt.event.MouseEvent evt) {                                     
         DefaultTableModel model=(DefaultTableModel)tbusers.getModel();
         int myindex=tbusers.getSelectedRow();
         
@@ -306,17 +306,17 @@ User pr=new User();
         txttype.setText(model.getValueAt(myindex, 2).toString());
         txtuser.setText(model.getValueAt(myindex,3 ).toString());
 
-    }//GEN-LAST:event_tbusersMouseClicked
+    }                                    
 
-    private void btncancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncancelMouseClicked
+    private void btncancelMouseClicked(java.awt.event.MouseEvent evt) {                                       
         this.setVisible(false);
         new Main_screen().setVisible(true);
 
-    }//GEN-LAST:event_btncancelMouseClicked
+    }                                      
 
-    private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
+    private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-    }//GEN-LAST:event_btncancelActionPerformed
+    }                                         
 
     /**
      * @param args the command line arguments
@@ -353,7 +353,7 @@ User pr=new User();
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btnadd;
     private javax.swing.JButton btncancel;
     private javax.swing.JButton btndelete;
@@ -369,5 +369,5 @@ User pr=new User();
     private javax.swing.JTextField txtpassword;
     private javax.swing.JTextField txttype;
     private javax.swing.JTextField txtuser;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
