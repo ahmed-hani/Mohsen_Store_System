@@ -62,7 +62,7 @@ public class User {
     }
    
      public boolean Add() throws Exception {
-        Connection conn=new DBConnection().getconnection();
+        Connection conn= DBConnection.getInstance().getconnection();
 
             PreparedStatement add=conn.prepareStatement("insert into users values (?,?,?,?)");
         add.setString(1, account_name);
@@ -77,7 +77,7 @@ public class User {
     }
 
     public boolean Edite() throws Exception {
-        Connection conn=new DBConnection().getconnection();
+        Connection conn= DBConnection.getInstance().getconnection();
                 PreparedStatement edite=conn.prepareStatement("UPDATE users SET PASSWORD=?,TYPE=?,USERNAME=? WHERE ACCOUNT_NAME=?");
         edite.setString(1, password);
         edite.setString(2, type);
@@ -90,7 +90,7 @@ public class User {
     }
 
     public boolean Delete() throws Exception {
-        Connection conn=new DBConnection().getconnection();
+        Connection conn= DBConnection.getInstance().getconnection();
         PreparedStatement delete = conn.prepareStatement("DELETE FROM users WHERE ACCOUNT_NAME=?");
         delete.setString(1, account_name);
         delete.execute();
